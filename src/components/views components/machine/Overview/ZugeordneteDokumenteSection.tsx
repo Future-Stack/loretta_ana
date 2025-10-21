@@ -9,6 +9,7 @@ const PrufungenInfoTable = lazy(() => import('./machineDetails/subTabs/Prufungen
 const AusgabeprotokollTable = lazy(() => import('./machineDetails/subTabs/AusgabeprotokollTable'));
 const RucknahmeprotokollTable = lazy(() => import('./machineDetails/subTabs/RucknahmeprotokollTable'));
 const WissensdatenbankTable = lazy(() => import('./machineDetails/subTabs/WissensdatenbankTable'));
+const Störungsmeldungs = lazy(() => import('./machineDetails/subTabs/Störungsmeldungs-Depot'));
 
 const ZugeordneteDokumenteSection = () => {
   const [activeSubTab, setActiveSubTab] = useState('Arbeitsauftrag');
@@ -23,6 +24,7 @@ const ZugeordneteDokumenteSection = () => {
     { name: 'Ausgabeprotokoll', count: 6 },
     { name: 'Rücknahmeprotokoll', count: 3 },
     { name: 'Wissensdatenbank', count: 1 },
+    { name: 'Störungsmeldungs-Depot' },
   ];
 
   const handleRefresh = () => {
@@ -87,6 +89,7 @@ const ZugeordneteDokumenteSection = () => {
           {activeSubTab === 'Ausgabeprotokoll' && <AusgabeprotokollTable key={`ausgabeprotokoll-${refreshKey}`} />}
           {activeSubTab === 'Rücknahmeprotokoll' && <RucknahmeprotokollTable key={`rucknahmeprotokoll-${refreshKey}`} />}
           {activeSubTab === 'Wissensdatenbank' && <WissensdatenbankTable key={`wissensdatenbank-${refreshKey}`} />}
+          {activeSubTab === 'Störungsmeldungs-Depot' && <Störungsmeldungs key={`storungmeldungs-${refreshKey}`} />}
         </Suspense>
       </div>
     </div>

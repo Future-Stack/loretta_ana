@@ -173,6 +173,30 @@ const WorkLogOverview: React.FC = () => {
       documents: [],
       files: [],
     },
+    {
+      id: "10",
+      date: "26.09.2025",
+      machineTitle: "Test",
+      boelsNumber: "172670375",
+      wert: 0.0,
+      technician: "Helmuth",
+      depot: "Depot 578",
+      actionStatus: "Service Telematics!",
+      documents: [],
+      files: [],
+    },
+    {
+      id: "11", 
+      date: "26.09.2025",
+      machineTitle: "Bomag BPR 35/60 D/H Rüttelplatte 35 kN",
+      boelsNumber: "00000",
+      wert: 0.0,
+      technician: "Helmuth",
+      depot: "Depot 578",
+      actionStatus: "Check!",
+      documents: [],
+      files: [],
+    },
   ];
 
   // Filter worklogs based on searchTerm
@@ -226,7 +250,7 @@ const WorkLogOverview: React.FC = () => {
     <div className="flex flex-col w-full p-4 sm:p-8 border bg-white border-gray-300 rounded-md">
       {isOverview ? (
         <>
-          <h2 className="text-[1.75rem] font-bold mb-4 sm:mb-6">Overview</h2>
+          <h2 className="text-[1.75rem] font-bold mb-4 sm:mb-6 pb-4 border-b-2 border-gray-300">Overview</h2>
 
           <div className="bg-gray-50 rounded-md border border-gray-200">
             {/* Table Header */}

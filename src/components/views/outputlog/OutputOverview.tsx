@@ -299,7 +299,7 @@ const ProtocolOverview: React.FC = () => {
   const searchTerm = useSelector((state: RootState) => state.search.term);
   
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 6;
 
   const allItems: ProtocolCardItem[] = [
     {
@@ -311,7 +311,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Kadlod",
       date: "17.03.2025",
       status: "Vorbereitet",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png", "/output4.png"],
       technicalData: {
         boelsNummer: "11991",
         subgruppe: "11991",
@@ -329,21 +329,21 @@ const ProtocolOverview: React.FC = () => {
           name: "1060_20250122_083213.jpg",
           size: "178 KB",
           date: "12/27/2021 09:32 AM",
-          thumbnail: "/image 7.png"
+          thumbnail: "/output1.png"
         },
         {
           id: "2",
           name: "1060_20250122_083213.jpg",
           size: "519 KB",
           date: "04/09/2025 11:59 AM",
-          thumbnail: "/image 7.png"
+          thumbnail: "/output2.png"
         },
         {
           id: "3",
           name: "1060_20250122_083213.jpg",
           size: "519 KB",
           date: "04/09/2025 11:59 AM",
-          thumbnail: "/image 7.png"
+          thumbnail: "/output3.png"
         }
       ]
     },
@@ -356,7 +356,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Kadlod",
       date: "17.03.2025",
       status: "Vorbereitet",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png"],
       technicalData: {
         boelsNummer: "11992",
         subgruppe: "11992",
@@ -394,7 +394,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Kadlod",
       date: "17.03.2025",
       status: "In Bearbeitung",
-      images: ["/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png"],
       technicalData: {
         boelsNummer: "11993",
         subgruppe: "11993",
@@ -416,7 +416,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Kadlod",
       date: "17.03.2025",
       status: "Abgeschlossen",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png", "/output4.png", "/output5.png"],
       technicalData: {
         boelsNummer: "11994",
         subgruppe: "11994",
@@ -438,7 +438,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Kadlod",
       date: "17.03.2025",
       status: "Vorbereitet",
-      images: ["/image 7.png"],
+      images: ["/output1.png"],
       technicalData: {
         boelsNummer: "11995",
         subgruppe: "11995",
@@ -460,7 +460,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Schmidt",
       date: "18.03.2025",
       status: "In Bearbeitung",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png"],
       technicalData: {
         boelsNummer: "11996",
         subgruppe: "11996",
@@ -482,7 +482,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Mueller",
       date: "19.03.2025",
       status: "Abgeschlossen",
-      images: ["/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png"],
       technicalData: {
         boelsNummer: "11997",
         subgruppe: "11997",
@@ -504,7 +504,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Weber",
       date: "20.03.2025",
       status: "Vorbereitet",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png", "/output4.png"],
       technicalData: {
         boelsNummer: "11998",
         subgruppe: "11998",
@@ -526,7 +526,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Fischer",
       date: "21.03.2025",
       status: "In Bearbeitung",
-      images: ["/image 7.png", "/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png", "/output3.png"],
       technicalData: {
         boelsNummer: "11999",
         subgruppe: "11999",
@@ -548,7 +548,7 @@ const ProtocolOverview: React.FC = () => {
       techniker: "Becker",
       date: "22.03.2025",
       status: "Abgeschlossen",
-      images: ["/image 7.png", "/image 7.png"],
+      images: ["/output1.png", "/output2.png"],
       technicalData: {
         boelsNummer: "12000",
         subgruppe: "12000",

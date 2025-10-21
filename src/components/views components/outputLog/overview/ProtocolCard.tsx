@@ -44,35 +44,35 @@ const ProtocolCard: React.FC<{
       {/* Desktop Layout (sm and above) */}
       <div
         onClick={onClick}
-        className="cursor-pointer hidden sm:grid grid-cols-5 items-center gap-0 px-4 py-3 bg-white border border-gray-200 rounded hover:bg-gray-50 transition-colors"
+        className="cursor-pointer hidden sm:grid grid-cols-5 items-center gap-4 px-4 py-3 bg-white border border-gray-200 rounded hover:bg-gray-50 transition-colors"
       >
-        {/* Boels NR / MV Nr */}
+        {/* Section 1: Icon + Boels NR / MV Nr */}
         <div className="flex items-center gap-3">
           <img
             src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23FF8C00'/%3E%3C/svg%3E"
             alt=""
-            className="w-10 h-10 rounded"
+            className="w-10 h-10 rounded flex-shrink-0"
           />
-          <div className="text-sm">
-            <div className="font-semibold text-gray-900">{item.boelsNr}</div>
-            <div className="text-xs text-gray-600">MV Nr: {item.mvNr}</div>
+          <div>
+            <div className="text-sm font-bold text-gray-900">{item.boelsNr}</div>
+            <div className="text-xs text-gray-500">MV Nr: {item.mvNr}</div>
           </div>
         </div>
 
-        {/* Delivery Type / Customer */}
+        {/* Section 2: Delivery Type */}
         <div>
-          <span className="text-red-600 font-medium text-sm">
+          <span className="text-red-600 font-semibold text-sm">
             {item.deliveryType}
           </span>
         </div>
 
-        {/* Techniker / Date */}
-        <div className="text-sm">
-          <div className="font-semibold text-gray-900">{item.technician}</div>
-          <div className="text-xs text-gray-600">am: {item.date}</div>
+        {/* Section 3: Techniker / Date */}
+        <div>
+          <div className="text-sm font-semibold text-gray-900">{item.technician}</div>
+          <div className="text-xs text-gray-500">am: {item.date}</div>
         </div>
 
-        {/* Status */}
+        {/* Section 4: Status */}
         <div>
           <span
             className={`px-3 py-1 rounded text-xs font-semibold inline-block ${getStatusColor(
@@ -83,8 +83,8 @@ const ProtocolCard: React.FC<{
           </span>
         </div>
 
-        {/* Attachment */}
-        <div className="flex justify-start px-4">
+        {/* Section 5: Link */}
+        <div className="flex justify-center">
           <button className="p-2 text-blue-500 hover:text-blue-700 transition-colors">
             <LinkIcon size={18} />
           </button>

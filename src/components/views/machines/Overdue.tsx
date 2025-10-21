@@ -1,34 +1,32 @@
 import { useState } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 
 const Overdue = () => {
   const [subgroupFrom, setSubgroupFrom] = useState("");
   const [subgroupTo, setSubgroupTo] = useState("");
   const [boelsDepot, setBoelsDepot] = useState("");
 
-  const [e57aFrom, setE57aFrom] = useState<Date | null>(new Date("2025-08-07"));
-  const [e57aTo, setE57aTo] = useState<Date | null>(null);
-  const [externOveFrom, setExternOveFrom] = useState<Date | null>(new Date("2025-08-07"));
-  const [externOveTo, setExternOveTo] = useState<Date | null>(null);
-  const [tpgFrom, setTpgFrom] = useState<Date | null>(null);
-  const [tpgTo, setTpgTo] = useState<Date | null>(null);
-  const [internFrom, setInternFrom] = useState<Date | null>(null);
-  const [internTo, setInternTo] = useState<Date | null>(null);
+  const [e57aFrom, setE57aFrom] = useState("2025-08-07");
+  const [e57aTo, setE57aTo] = useState("");
+  const [externOveFrom, setExternOveFrom] = useState("2025-08-07");
+  const [externOveTo, setExternOveTo] = useState("");
+  const [tpgFrom, setTpgFrom] = useState("");
+  const [tpgTo, setTpgTo] = useState("");
+  const [internFrom, setInternFrom] = useState("");
+  const [internTo, setInternTo] = useState("");
 
   const handleSearch = () => console.log("Searching...");
   const handleReset = () => {
     setSubgroupFrom("");
     setSubgroupTo("");
     setBoelsDepot("");
-    setE57aFrom(new Date("2025-08-07"));
-    setE57aTo(null);
-    setExternOveFrom(new Date("2025-08-07"));
-    setExternOveTo(null);
-    setTpgFrom(null);
-    setTpgTo(null);
-    setInternFrom(null);
-    setInternTo(null);
+    setE57aFrom("2025-08-07");
+    setE57aTo("");
+    setExternOveFrom("2025-08-07");
+    setExternOveTo("");
+    setTpgFrom("");
+    setTpgTo("");
+    setInternFrom("");
+    setInternTo("");
   };
 
   return (
@@ -173,10 +171,10 @@ const LabeledInput = ({
 
 interface LabeledDateRangeProps {
   label: string;
-  from: Date | null;
-  to: Date | null;
-  setFrom: (date: Date | null) => void;
-  setTo: (date: Date | null) => void;
+  from: string;
+  to: string;
+  setFrom: (value: string) => void;
+  setTo: (value: string) => void;
 }
 
 const LabeledDateRange = ({
@@ -189,9 +187,9 @@ const LabeledDateRange = ({
   <div>
     <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
     <div className="flex gap-2 items-center">
-      <DateField date={from} onChange={setFrom} />
+      <DateField value={from} onChange={setFrom} />
       <span className="text-gray-600">bis</span>
-      <DateField date={to} onChange={setTo} />
+      <DateField value={to} onChange={setTo} />
     </div>
   </div>
 );
@@ -215,24 +213,19 @@ const SingleInput = ({ label, value, onChange }: SingleInputProps) => (
   </div>
 );
 
-/* ✅ FIXED: Calendar icon now appears *inside* the date input field */
+/* ✅ Simplified Date Field (HTML native date input, no design change) */
 interface DateFieldProps {
-  date: Date | null;
-  onChange: (date: Date | null) => void;
+  value: string;
+  onChange: (value: string) => void;
 }
 
-const DateField = ({ date, onChange }: DateFieldProps) => (
-  <div className="relative flex-1">
-    <DatePicker
-      selected={date}
-      onChange={onChange}
-      dateFormat="d-MMM-yyyy"
-      placeholderText="Choose date"
-      className="w-full px-3 py-2 pr-9 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 text-gray-700 cursor-pointer"
-      calendarClassName="rounded-lg shadow-lg border border-gray-200"
-      popperPlacement="bottom-start"
-    />
-  </div>
+const DateField = ({ value, onChange }: DateFieldProps) => (
+  <input
+    type="date"
+    value={value}
+    onChange={(e) => onChange(e.target.value)}
+    className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-500 text-gray-700 cursor-pointer"
+  />
 );
 
 export default Overdue;
