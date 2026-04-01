@@ -15,6 +15,7 @@ import WorkLogOverview from "./work log/WorkLogOverview";
 import TestReport from "./boels inspection/TestReport";
 import Warehouse578 from "./spare parts/Warehouse578";
 import Warehouse1061 from "./spare parts/Warehouse1061";
+import FaultLogQuery from "./fault log/FaultLogQuery";
 
 const ViewRouter = ({ path }: { path: string }) => {
   if (path === "/login") return <p>Login View component</p>;
@@ -103,7 +104,7 @@ const ViewRouter = ({ path }: { path: string }) => {
       case "faultlog-overview":
         return <FaultLogOverview />;
       case "faultlog-query":
-        return <p>Faultlog Query</p>;
+        return <FaultLogQuery />;
       case "faultlog-boels-home":
         return <p>Faultlog Boels Home</p>;
       case "faultlog-boels-intranet":

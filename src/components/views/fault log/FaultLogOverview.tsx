@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Truck } from "lucide-react";
 import type { RootState } from "@/redux/store";
 import Pagination from "@/components/views components/machine/Pagination";
+
+// Lazy load detail view
+const FaultLogDetail = lazy(() => import("./FaultLogDetail"));
 
 // ==========================================
 // Types
@@ -29,9 +33,10 @@ type ExpenseItem = {
 // ==========================================
 type ExpenseRowProps = {
   item: ExpenseItem;
+  onClick: () => void;
 };
 
-const ExpenseRow: React.FC<ExpenseRowProps> = ({ item }) => {
+const ExpenseRow: React.FC<ExpenseRowProps> = ({ item, onClick }) => {
   const getStatusColor = (status: ExpenseStatus) => {
     switch (status) {
       case "Provisorisch Rep.!":
@@ -48,7 +53,10 @@ const ExpenseRow: React.FC<ExpenseRowProps> = ({ item }) => {
   };
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 hover:bg-gray-50 transition-colors text-sm">
+    <div 
+      onClick={onClick}
+      className="flex items-center gap-3 px-4 py-3 border-b border-gray-200 hover:bg-gray-50 transition-colors text-sm cursor-pointer"
+    >
       {/* Truck Icon */}
       <div className="flex-shrink-0">
         <Truck size={18} className="text-gray-700" />
@@ -107,6 +115,8 @@ const ExpenseRow: React.FC<ExpenseRowProps> = ({ item }) => {
 // Main FaultLogOverview Component
 // ==========================================
 const FaultLogOverview: React.FC = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const searchTerm = useSelector((state: RootState) => state.search.term);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
@@ -324,6 +334,22 @@ const FaultLogOverview: React.FC = () => {
     }
   ];
 
+  // Routing logic
+  const pathParts = location.pathname.split("/").filter(Boolean);
+  const isOverview = location.pathname === "/fault-log/faultlog-overview";
+  const detailId = 
+    pathParts.length === 3 && pathParts[1] === "faultlog-overview"
+      ? pathParts[2]
+      : null;
+
+  const handleRowClick = (item: ExpenseItem) => {
+    navigate(`/fault-log/faultlog-overview/${item.id}`);
+  };
+
+  const handleBack = () => {
+    navigate("/fault-log/faultlog-overview");
+  };
+
   // Filter logic
   const filteredExpenses = allExpenses.filter(
     (item) =>
@@ -355,32 +381,44 @@ const FaultLogOverview: React.FC = () => {
 
   return (
     <div className="flex flex-col min-h-screen w-full p-7 sm:p-8 border bg-white border-gray-300 rounded-md">
-      <h2 className="text-[1.75rem] font-bold mb-6">Fault Log Record</h2>
-      <hr className="border-gray-300 mb-6" />
+      <Suspense fallback={<div className="text-center py-10 text-gray-500 animate-pulse">Loading...</div>}>
+        {isOverview ? (
+          <>
+            <h2 className="text-[1.75rem] font-bold mb-6">Fault Log Record</h2>
+            <hr className="border-gray-300 mb-6" />
 
-      {/* Results List */}
-      <div className="w-full bg-white border border-gray-200 rounded-lg overflow-hidden mb-6">
-        {getCurrentPageItems().length > 0 ? (
-          getCurrentPageItems().map((expense) => (
-            <ExpenseRow key={expense.id} item={expense} />
-          ))
+            {/* Results List */}
+            <div className="w-full bg-white border border-gray-200 rounded-lg overflow-hidden mb-6 shadow-sm">
+              {getCurrentPageItems().length > 0 ? (
+                getCurrentPageItems().map((expense) => (
+                  <ExpenseRow 
+                    key={expense.id} 
+                    item={expense} 
+                    onClick={() => handleRowClick(expense)}
+                  />
+                ))
+              ) : (
+                <p className="text-gray-500 text-center py-6">
+                  No fault logs found for "{searchTerm}"
+                </p>
+              )}
+            </div>
+
+            {/* Pagination */}
+            {filteredExpenses.length > 0 && (
+              <div className="w-full flex justify-center">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
+              </div>
+            )}
+          </>
         ) : (
-          <p className="text-gray-500 text-center py-6">
-            No fault logs found for "{searchTerm}"
-          </p>
+          <FaultLogDetail id={detailId || ""} onBack={handleBack} />
         )}
-      </div>
-
-      {/* Pagination */}
-      {filteredExpenses.length > 0 && (
-        <div className="w-full flex justify-center">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={handlePageChange}
-          />
-        </div>
-      )}
+      </Suspense>
     </div>
   );
 };

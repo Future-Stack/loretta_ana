@@ -59,7 +59,11 @@ const UniversalDropdown: React.FC<UniversalDropdownProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.15 }}
-            className={`absolute top-full mt-2 rounded-lg shadow-lg border border-gray-700 bg-gray-800 py-2 z-50 min-w-[180px] ${alignment} ${className}`}
+            className={`absolute top-full mt-2 rounded-lg shadow-lg border z-50 min-w-[220px] ${alignment} ${
+              className.includes("bg-") ? "" : "bg-gray-800"
+            } ${
+              className.includes("border-") ? "" : "border-gray-700"
+            } ${className}`}
             onClick={handleItemClick}
           >
             {children}
