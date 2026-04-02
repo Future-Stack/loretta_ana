@@ -16,6 +16,8 @@ import TestReport from "./boels inspection/TestReport";
 import Warehouse578 from "./spare parts/Warehouse578";
 import Warehouse1061 from "./spare parts/Warehouse1061";
 import FaultLogQuery from "./fault log/FaultLogQuery";
+import ReturnProtocolOverview from "./return protocol/ReturnProtocolOverview";
+import TankLog from "./return protocol/TankLog";
 
 const ViewRouter = ({ path }: { path: string }) => {
   if (path === "/login") return <p>Login View component</p>;
@@ -118,15 +120,23 @@ const ViewRouter = ({ path }: { path: string }) => {
 
       // Return protocol
       case "return-overview":
-        return <p>Return Overview</p>;
-      case "return-fuel-log":
-        return <p>Return Fuel Log</p>;
+        return <ReturnProtocolOverview />;
+      case "return-tank-log":
+        return <TankLog />;
+      case "return-new-changed":
+        return <p>Return New & Changed</p>;
       case "return-fuel-list":
         return <p>Return Fuel List</p>;
       case "return-return":
         return <p>Return Return</p>;
-      case "return-issue-return":
-        return <p>Return Issue Return</p>;
+      case "return-life":
+        return <p>Return Life</p>;
+      case "return-output-return":
+        return <p>Return Output Return</p>;
+      case "return-statistics":
+        return <p>Return Statistics</p>;
+      case "return-application-builder":
+        return <p>Return Application Builder</p>;
 
       // Priority & Replist
       case "priority-priorities":

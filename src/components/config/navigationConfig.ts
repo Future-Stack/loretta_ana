@@ -188,7 +188,8 @@ const NAVIGATION_CONFIG: Record<ViewType, { label: string; sidebar: SidebarConfi
           title: "Returns",
           items: [
             { label: "Overview", view: "return-overview" },
-            { label: "Fuel log", view: "return-fuel-log" },
+            { label: "Tank log", view: "return-tank-log" },
+            { label: "New & changed", view: "return-new-changed" },
           ],
         },
         {
@@ -200,7 +201,18 @@ const NAVIGATION_CONFIG: Record<ViewType, { label: string; sidebar: SidebarConfi
         },
         {
           title: "Left",
-          items: [{ label: "Issue Return", view: "return-issue-return" }],
+          items: [
+            { label: "Life", view: "return-life" },
+            { label: "Output Return", view: "return-output-return" },
+          ],
+        },
+        {
+          title: "Statistics",
+          items: [{ label: "Statistics", view: "return-statistics" }],
+        },
+        {
+          title: "Application Builder",
+          items: [{ label: "Application Builder", view: "return-application-builder" }],
         },
       ],
     },

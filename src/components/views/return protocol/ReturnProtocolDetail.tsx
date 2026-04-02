@@ -3,22 +3,22 @@ import { ChevronDown, ChevronUp, Link, FileText, Pencil, Printer, ExternalLink, 
 import UniversalDropdown from "@/common/dropdown/UniversalDropdown";
 
 // Lazy load the tab contents
-const StorungsformularTab = lazy(() => import("./faultLogDetails/StorungsformularTab"));
-const EmptyTab = lazy(() => import("./faultLogDetails/EmptyTab"));
-const HistoryTab = lazy(() => import("./faultLogDetails/HistoryTab"));
+const ProtocolTab = lazy(() => import("./returnProtocolDetails/ProtocolTab"));
+const LinkTab = lazy(() => import("./returnProtocolDetails/LinkTab"));
+const SecurityTab = lazy(() => import("./returnProtocolDetails/SecurityTab"));
 
-interface FaultLogDetailProps {
+interface ReturnProtocolDetailProps {
   id: string;
   onBack: () => void;
 }
 
-const FaultLogDetail: React.FC<FaultLogDetailProps> = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState("Storungsformular");
+const ReturnProtocolDetail: React.FC<ReturnProtocolDetailProps> = ({ onBack }) => {
+  const [activeTab, setActiveTab] = useState("Rücknahmeprotokoll");
 
   const tabs = [
-    { id: "Storungsformular", label: "Storungsformular", icon: null },
+    { id: "Rücknahmeprotokoll", label: "Rücknahmeprotokoll", icon: null },
     { id: "Link", label: null, icon: <Link size={18} /> },
-    { id: "Shield", label: null, icon: <Lock size={18} /> },
+    { id: "Security", label: null, icon: <Lock size={18} /> },
   ];
 
   return (
@@ -33,7 +33,6 @@ const FaultLogDetail: React.FC<FaultLogDetailProps> = ({ onBack }) => {
             <img src="/back.svg" alt="Back" className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
             Back
           </button>
-          {/* <span className="text-[10px] text-gray-400 font-medium ml-7">Record ID: {id}</span> */}
         </div>
 
         <div className="flex items-center gap-4">
@@ -106,7 +105,7 @@ const FaultLogDetail: React.FC<FaultLogDetailProps> = ({ onBack }) => {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm border ${
+            className={`flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm border whitespace-nowrap min-w-[40px] ${
               activeTab === tab.id
                 ? "bg-orange-100 text-orange-600 border-orange-200"
                 : "bg-white text-gray-400 border-gray-100 hover:bg-gray-50 hover:text-gray-600"
@@ -120,13 +119,13 @@ const FaultLogDetail: React.FC<FaultLogDetailProps> = ({ onBack }) => {
       {/* Tab Content */}
       <div className="w-full">
         <Suspense fallback={<div className="flex items-center justify-center p-20 text-gray-400 animate-pulse font-medium">Loading details...</div>}>
-          {activeTab === "Storungsformular" && <StorungsformularTab />}
-          {activeTab === "Link" && <EmptyTab />}
-          {activeTab === "Shield" && <HistoryTab />}
+          {activeTab === "Rücknahmeprotokoll" && <ProtocolTab />}
+          {activeTab === "Link" && <LinkTab />}
+          {activeTab === "Security" && <SecurityTab />}
         </Suspense>
       </div>
     </div>
   );
 };
 
-export default FaultLogDetail;
+export default ReturnProtocolDetail;
