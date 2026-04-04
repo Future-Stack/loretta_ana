@@ -25,7 +25,7 @@ type TankLogItem = {
 // TableHeader Component
 // ==========================================
 const TableHeader: React.FC = () => (
-  <div className="hidden xl:grid grid-cols-[150px_150px_2fr_120px_150px] gap-6 px-10 py-5 bg-gray-50 border-b border-gray-100 text-[11px] font-bold text-gray-400 border-t border-gray-200 uppercase tracking-widest">
+  <div className="hidden xl:grid grid-cols-[1fr_1fr_2fr_1fr_1fr] gap-4 px-10 py-5 bg-gray-50 border-b border-gray-100 text-[11px] font-bold text-gray-400 border-t border-gray-200 uppercase tracking-widest">
     <div>Datum</div>
     <div>Nummer</div>
     <div>Beschreibung</div>
@@ -48,7 +48,7 @@ const TankLogRow: React.FC<TankLogRowProps> = ({ item, onClick }) => {
       {/* Desktop Layout */}
       <div 
         onClick={onClick}
-        className="hidden xl:grid grid-cols-[150px_150px_2fr_120px_150px] gap-6 px-10 py-5 border-b border-gray-50 hover:bg-gray-50/50 transition-colors cursor-pointer items-center text-sm font-medium"
+        className="hidden xl:grid grid-cols-[1fr_1fr_2fr_1fr_1fr] gap-4 px-10 py-5 border-b border-gray-50 hover:bg-gray-50/50 transition-colors cursor-pointer items-center text-sm font-medium"
       >
         <div className="text-gray-900 whitespace-nowrap">
           <span className="text-gray-400 font-medium mr-2">Am:</span>

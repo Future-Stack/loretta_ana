@@ -18,6 +18,7 @@ import Warehouse1061 from "./spare parts/Warehouse1061";
 import FaultLogQuery from "./fault log/FaultLogQuery";
 import ReturnProtocolOverview from "./return protocol/ReturnProtocolOverview";
 import TankLog from "./return protocol/TankLog";
+import ReturnNewChanged from "./return protocol/ReturnNewChanged";
 
 const ViewRouter = ({ path }: { path: string }) => {
   if (path === "/login") return <p>Login View component</p>;
@@ -124,7 +125,7 @@ const ViewRouter = ({ path }: { path: string }) => {
       case "return-tank-log":
         return <TankLog />;
       case "return-new-changed":
-        return <p>Return New & Changed</p>;
+        return <ReturnNewChanged />;
       case "return-fuel-list":
         return <p>Return Fuel List</p>;
       case "return-return":

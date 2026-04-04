@@ -27,10 +27,10 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
       <div className="flex items-center -ml-1">
         <button
           onClick={onBack}
-          className="flex items-center gap-2 text-[15px] font-bold text-slate-800 hover:text-orange-600 transition-all group"
+          className="flex items-center gap-2 text-[15px] font-extrabold text-[#111827] hover:text-orange-600 transition-all group"
         >
-          <span className="text-xl leading-none group-hover:-translate-x-1 transition-transform">←</span>
-          <span>Back</span>
+          <img src="/back.svg" alt="Back" className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <span className="mb-0.5">Back</span>
         </button>
       </div>
 
@@ -50,7 +50,7 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
                 }`}
               >
                 {tab.icon ? (
-                  <span className={activeTab === tab.id ? "text-orange-400" : "text-gray-400"}>
+                  <span className={activeTab === tab.id ? "text-orange-400 font-bold" : "text-gray-400"}>
                     {tab.icon}
                   </span>
                 ) : tab.label}
@@ -90,7 +90,7 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
         </div>
 
         {/* Footer for upper container */}
-        <div className="mt-4 text-right px-4">
+        <div className="mt-8 text-right">
           <span className="text-[11px] font-bold text-[#FBD2A0] uppercase tracking-tight italic">
             Powered by Boels-Technikweb ®
           </span>
@@ -100,20 +100,20 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
       {/* Container 2: Shared Maschinen Section */}
       <div className="bg-white border border-gray-100 rounded-xl shadow-sm flex flex-col p-8 overflow-hidden">
         <div className="flex items-center justify-between mb-8">
-          <div className="px-3 py-1 bg-[#FFF6ED] border border-[#FBD2A0] rounded-md">
+          <div className="px-3 py-1 bg-[#FFF6ED] border border-[#FBD2A0] rounded-md shadow-sm">
              <span className="text-[11px] font-bold text-[#F39E20] capitalize">Maschinen (0)</span>
           </div>
-          <button className="p-2 text-gray-400 hover:text-gray-900 transition-colors">
+          <button className="p-2 text-gray-900 font-bold hover:text-orange-500 transition-colors">
             <RotateCcw size={20} />
           </button>
         </div>
 
-        <div className="flex flex-col items-center justify-center py-20 bg-white">
-          <h3 className="text-[40px] font-bold text-gray-900 tracking-tight">No Data Found</h3>
+        <div className="flex flex-col items-center justify-center py-24 bg-white border border-gray-50 rounded-2xl shadow-inner">
+           <h3 className="text-[2.75rem] font-bold text-gray-900 tracking-tight">No Data Found</h3>
         </div>
 
-        <div className="mt-8 text-right px-4">
-          <span className="text-[11px] font-bold text-[#FBD2A0] uppercase tracking-tight italic opacity-70">
+        <div className="mt-8 text-right opacity-70">
+          <span className="text-[11px] font-bold text-[#FBD2A0] uppercase tracking-tight italic">
             Powered by Boels-Technikweb ®
           </span>
         </div>
