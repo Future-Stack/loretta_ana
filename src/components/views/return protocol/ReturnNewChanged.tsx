@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import { useSelector } from "react-redux";
 import { ChevronDown, Folder } from "lucide-react";
 import type { RootState } from "@/redux/store";
 import Pagination from "@/components/views components/machine/Pagination";
 import UniversalDropdown from "@/common/dropdown/UniversalDropdown";
+
+// Lazy load the detail view
+const ReturnNewChangedDetail = lazy(() => import("./ReturnNewChangedDetail"));
 
 // ==========================================
 // Types
@@ -49,9 +52,12 @@ const MOCK_DATA: ReturnCardData[] = [
 // ==========================================
 // ReturnCard Component
 // ==========================================
-const ReturnCard: React.FC<{ data: ReturnCardData }> = ({ data }) => {
+const ReturnCard: React.FC<{ data: ReturnCardData; onClick: () => void }> = ({ data, onClick }) => {
   return (
-    <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col gap-6 group">
+    <div 
+      onClick={onClick}
+      className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow cursor-pointer flex flex-col gap-6 group"
+    >
       {/* Container Icon & Title */}
       <div className="flex items-center gap-4">
         <div className="relative w-12 h-12 flex items-center justify-center">
@@ -86,6 +92,7 @@ const ReturnCard: React.FC<{ data: ReturnCardData }> = ({ data }) => {
 const ReturnNewChanged: React.FC = () => {
   const searchTerm = useSelector((state: RootState) => state.search.term);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
   const itemsPerPage = 12;
 
   // Filter logic
@@ -110,69 +117,93 @@ const ReturnNewChanged: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleCardClick = (folder: ReturnCardData) => {
+    setSelectedFolder(folder.title);
+  };
+
+  const handleBack = () => {
+    setSelectedFolder(null);
+  };
+
   return (
     <div className="flex flex-col min-h-screen w-full p-7 sm:p-8 border bg-white border-gray-300 rounded-md">
        <div className="flex-1 flex flex-col">
-          {/* Header Section */}
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-[1.75rem] font-bold text-gray-900">Return Protocol New/Changed</h2>
-            
-            <UniversalDropdown
-                trigger={
-                <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:border-gray-300 transition-all shadow-sm">
-                    - Aktionen -
-                    <ChevronDown size={16} />
-                </button>
-                }
-                align="right"
-                className="bg-white border-gray-100 !py-0 !shadow-2xl !rounded-xl overflow-hidden"
-            >
-                <div className="flex flex-col min-w-[260px] pb-2">
-                    <div className="flex items-center justify-between px-4 py-2.5 bg-blue-600 text-white mb-2">
-                        <span className="text-sm font-bold">- Aktionen -</span>
+          {selectedFolder ? (
+            <Suspense fallback={<div className="flex items-center justify-center p-20 text-gray-400 animate-pulse font-medium text-lg">Loading details...</div>}>
+              <ReturnNewChangedDetail 
+                folderName={selectedFolder} 
+                onBack={handleBack} 
+              />
+            </Suspense>
+          ) : (
+            <>
+              {/* Header Section */}
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-[1.75rem] font-bold text-gray-900">Return Protocol New/Changed</h2>
+                
+                <UniversalDropdown
+                    trigger={
+                    <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:border-gray-300 transition-all shadow-sm">
+                        - Aktionen -
+                        <ChevronDown size={16} />
+                    </button>
+                    }
+                    align="right"
+                    className="bg-white border-gray-100 !py-0 !shadow-2xl !rounded-xl overflow-hidden"
+                >
+                    <div className="flex flex-col min-w-[260px] pb-2">
+                        <div className="flex items-center justify-between px-4 py-2.5 bg-blue-600 text-white mb-2">
+                            <span className="text-sm font-bold">- Aktionen -</span>
+                        </div>
+
+                        <div className="px-4 py-1.5 text-sm font-bold text-gray-900">Ansicht...</div>
+                        <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">Details anzeigen</button>
+                        <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">Liste exportieren</button>
+                        <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors mb-2">Alle auswählen</button>
+
+                        <div className="px-4 py-1.5 text-sm font-bold text-gray-900 border-t border-gray-50 mt-1 pt-2">Drucken...</div>
+                        <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">PDF exportieren</button>
                     </div>
+                </UniversalDropdown>
+              </div>
 
-                    <div className="px-4 py-1.5 text-sm font-bold text-gray-900">Ansicht...</div>
-                    <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">Details anzeigen</button>
-                    <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">Liste exportieren</button>
-                    <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors mb-2">Alle auswählen</button>
+              <hr className="border-gray-200 mb-8" />
 
-                    <div className="px-4 py-1.5 text-sm font-bold text-gray-900 border-t border-gray-50 mt-1 pt-2">Drucken...</div>
-                    <button className="px-8 py-1.5 text-sm text-gray-700 hover:bg-gray-50 w-full text-left transition-colors">PDF exportieren</button>
-                </div>
-            </UniversalDropdown>
-          </div>
+              {/* Grid of Cards */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
+                {getCurrentPageItems().length > 0 ? (
+                    getCurrentPageItems().map((item) => (
+                        <ReturnCard 
+                          key={item.id} 
+                          data={item} 
+                          onClick={() => handleCardClick(item)}
+                        />
+                    ))
+                ) : (
+                    <div className="col-span-full flex flex-col items-center justify-center py-20 px-4">
+                        <h3 className="text-2xl font-bold text-gray-400">Keine Daten gefunden</h3>
+                    </div>
+                )}
+              </div>
 
-          <hr className="border-gray-200 mb-8" />
-
-          {/* Grid of Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-            {getCurrentPageItems().length > 0 ? (
-                getCurrentPageItems().map((item) => (
-                    <ReturnCard key={item.id} data={item} />
-                ))
-            ) : (
-                <div className="col-span-full flex flex-col items-center justify-center py-20 px-4">
-                    <h3 className="text-2xl font-bold text-gray-400">Keine Daten gefunden</h3>
-                </div>
-            )}
-          </div>
-
-          {/* Pagination Wrapper */}
-          <div className="mt-auto pt-6">
-            {filteredData.length > 0 && (
-                <div className="w-full flex justify-center">
-                    <Pagination
-                        currentPage={currentPage}
-                        totalPages={totalPages}
-                        onPageChange={handlePageChange}
-                    />
-                </div>
-            )}
-          </div>
+              {/* Pagination Wrapper */}
+              <div className="mt-auto pt-6">
+                {filteredData.length > 0 && (
+                    <div className="w-full flex justify-center">
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={handlePageChange}
+                        />
+                    </div>
+                )}
+              </div>
+            </>
+          )}
        </div>
     </div>
   );
 };
 
 export default ReturnNewChanged;
+

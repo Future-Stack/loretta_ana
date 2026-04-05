@@ -22,7 +22,7 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
   ];
 
   return (
-    <div className="flex flex-col w-full h-full min-h-screen bg-[#F8F9FA] -m-8 sm:-m-10 p-8 sm:p-10 gap-6">
+    <div className="flex flex-col w-full h-full min-h-screen gap-6">
       {/* Back button */}
       <div className="flex items-center -ml-1">
         <button
