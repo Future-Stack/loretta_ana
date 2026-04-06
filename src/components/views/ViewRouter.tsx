@@ -19,6 +19,8 @@ import FaultLogQuery from "./fault log/FaultLogQuery";
 import ReturnProtocolOverview from "./return protocol/ReturnProtocolOverview";
 import TankLog from "./return protocol/TankLog";
 import ReturnNewChanged from "./return protocol/ReturnNewChanged";
+import FuelList from "./return protocol/FuelList";
+import Return from "./return protocol/Return";
 
 const ViewRouter = ({ path }: { path: string }) => {
   if (path === "/login") return <p>Login View component</p>;
@@ -127,9 +129,9 @@ const ViewRouter = ({ path }: { path: string }) => {
       case "return-new-changed":
         return <ReturnNewChanged />;
       case "return-fuel-list":
-        return <p>Return Fuel List</p>;
+        return <FuelList />;
       case "return-return":
-        return <p>Return Return</p>;
+        return <Return />;
       case "return-life":
         return <p>Return Life</p>;
       case "return-output-return":
