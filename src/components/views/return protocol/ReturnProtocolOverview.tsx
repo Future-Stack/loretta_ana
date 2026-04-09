@@ -33,7 +33,8 @@ type ReturnItem = {
 // TableHeader Component
 // ==========================================
 const TableHeader: React.FC = () => (
-  <div className="hidden xl:grid grid-cols-[50px_120px_120px_2fr_120px_100px_1fr_120px] gap-4 px-6 py-4 bg-gray-50 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
+  <div className="hidden xl:grid grid-cols-[50px_120px_120px_2fr_120px_100px_1fr_120px] gap-4 px-6 py-4 bg-gray-50 border-b border-gray-100 text-[11px] font-bold text-gray-400 uppercase tracking-widest border-t border-gray-200">
+
     <div className="flex justify-center text-gray-400">#</div>
     <div>Datum</div>
     <div>Nummer</div>
@@ -72,7 +73,7 @@ const ReturnRow: React.FC<ReturnRowProps> = ({ item, onClick }) => {
       {/* Desktop Layout (xl and above) */}
       <div 
         onClick={onClick}
-        className="hidden xl:grid grid-cols-[50px_120px_120px_2fr_120px_100px_1fr_120px] gap-4 px-6 py-4 border-b border-gray-100 hover:bg-gray-50/80 transition-all text-sm cursor-pointer items-center group overflow-hidden"
+        className="hidden xl:grid grid-cols-[50px_120px_120px_2fr_120px_100px_1fr_120px] gap-4 px-6 py-4 border-b border-gray-100 hover:bg-gray-50/80 transition-all text-[13px] cursor-pointer items-center group overflow-hidden"
       >
         <div className="flex justify-center flex-shrink-0">
           {item.isSuccess ? (
@@ -82,16 +83,16 @@ const ReturnRow: React.FC<ReturnRowProps> = ({ item, onClick }) => {
           )}
         </div>
 
-        <div className="text-gray-600 font-medium truncate">
-          <span className="text-gray-400 text-xs mr-1">Am:</span>
-          <span className="text-blue-600 font-bold">{item.date}</span>
+        <div className="text-gray-900 font-bold truncate">
+          <span className="text-gray-400 font-medium mr-1 uppercase text-[10px] tracking-wider">Am:</span>
+          <span className="text-blue-600">{item.date}</span>
         </div>
 
         <div className="text-red-500 font-bold font-mono truncate">
           {item.number}
         </div>
 
-        <div className="text-gray-900 font-medium truncate pr-4" title={item.description}>
+        <div className="text-gray-700 font-bold truncate pr-4" title={item.description}>
           {item.description}
         </div>
 
@@ -99,21 +100,22 @@ const ReturnRow: React.FC<ReturnRowProps> = ({ item, onClick }) => {
           {item.location}
         </div>
 
-        <div className="text-gray-600 font-medium">
-           <span className="text-gray-400 text-xs mr-1">BH:</span>
-           <span className="text-blue-600 font-bold">{item.counter}</span>
+        <div className="text-gray-900 font-bold">
+           <span className="text-gray-400 font-medium mr-1 uppercase text-[10px] tracking-wider">BH:</span>
+           <span className="text-blue-600">{item.counter}</span>
         </div>
 
-        <div className={`font-bold text-xs truncate ${getStatusColor(item.status)}`}>
-           <div>Gerät Status: {item.status.split(',')[0]}</div>
-           {item.status.includes(',') && <div className="text-[10px] mt-0.5">{item.status.split(',')[1].trim()}</div>}
+        <div className={`font-bold text-[11px] uppercase tracking-tighter truncate ${getStatusColor(item.status)}`}>
+           <div className="leading-tight">Gerät Status: {item.status.split(',')[0]}</div>
+           {item.status.includes(',') && <div className="text-[9px] opacity-70 mt-0.5">{item.status.split(',')[1].trim()}</div>}
         </div>
 
         <div className="text-right truncate">
-           <span className="text-gray-400 text-[10px] mr-1">Übernommen:</span>
+           <span className="text-gray-400 uppercase text-[10px] font-medium mr-1 tracking-wider">Übernommen:</span>
            <span className="text-blue-500 font-bold">{item.technician}</span>
         </div>
       </div>
+
 
       {/* Card Layout (below xl) */}
       <div 
@@ -399,7 +401,8 @@ const ReturnProtocolOverview: React.FC = () => {
         {isOverview ? (
           <div className="flex-1 flex flex-col">
             <div className="flex items-center justify-between mb-8">
-               <h2 className="text-[1.75rem] font-bold">Return Protocol Overview</h2>
+               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Return Protocol Overview</h2>
+
                
                 <UniversalDropdown
                   trigger={

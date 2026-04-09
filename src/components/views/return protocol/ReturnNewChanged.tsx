@@ -68,9 +68,10 @@ const ReturnCard: React.FC<{ data: ReturnCardData; onClick: () => void }> = ({ d
                 <path d="M8 7h8" />
             </svg>
         </div>
-        <h3 className="text-[1.1rem] font-bold text-gray-800">
-          {data.title} ({data.count})
+        <h3 className="text-[17px] font-bold text-gray-900 tracking-tight">
+          {data.title} <span className="text-gray-400 font-medium ml-1">({data.count})</span>
         </h3>
+
       </div>
 
       {/* New Badge Sub-card */}
@@ -139,7 +140,8 @@ const ReturnNewChanged: React.FC = () => {
             <>
               {/* Header Section */}
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-[1.75rem] font-bold text-gray-900">Return Protocol New/Changed</h2>
+                <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Return Protocol New/Changed</h2>
+
                 
                 <UniversalDropdown
                     trigger={

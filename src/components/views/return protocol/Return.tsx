@@ -131,8 +131,9 @@ const Return: React.FC = () => {
     <div className="w-full bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
       {/* Header */}
       <div className="px-8 py-6">
-        <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Returns</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Returns</h2>
       </div>
+
       <hr className="border-gray-100" />
 
       {/* Form Content */}
@@ -141,9 +142,10 @@ const Return: React.FC = () => {
           
           {/* Übernommen, Herr */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Übernommen, Herr:
             </label>
+
             <input
               type="text"
               placeholder="Type here"
@@ -155,9 +157,10 @@ const Return: React.FC = () => {
 
           {/* Übernommen am */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Übernommen am:
             </label>
+
             <div className="flex items-center gap-3">
               <div className="flex-1">
                 <DatePicker
@@ -185,9 +188,10 @@ const Return: React.FC = () => {
 
           {/* Gerät-Zustand */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Gerät-Zustand:
             </label>
+
             <CustomDropdown
               options={statusOptions}
               value={deviceStatus}
@@ -197,9 +201,10 @@ const Return: React.FC = () => {
 
           {/* Boels Depot */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Boels Depot:
             </label>
+
             <input
               type="text"
               placeholder="Type here"
@@ -211,9 +216,10 @@ const Return: React.FC = () => {
 
           {/* Boels-Nummer */}
           <div className="space-y-2 md:col-span-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Boels-Nummer:
             </label>
+
             <div className="flex items-center gap-3 w-full">
               <input
                 type="text"
@@ -235,9 +241,10 @@ const Return: React.FC = () => {
 
           {/* Volltextsuche */}
           <div className="space-y-2 md:col-span-2">
-             <label className="block text-sm font-bold text-gray-900">
+             <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Volltextsuche:
             </label>
+
             <div className="flex flex-col md:flex-row items-center gap-3">
                <div className="w-full md:w-1/2">
                   <CustomDropdown

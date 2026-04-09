@@ -170,7 +170,7 @@ const ReturnNewChangedDetail: React.FC<ReturnNewChangedDetailProps> = ({
           <button
             key={idx}
             onClick={() => setActiveTab(tab.label)}
-            className={`px-4 py-2 rounded-lg text-sm font-bold border transition-all whitespace-nowrap ${
+            className={`px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-widest border transition-all whitespace-nowrap ${
               activeTab === tab.label && idx === 0
                 ? "bg-orange-50 text-orange-600 border-orange-200"
                 : "bg-gray-50 text-gray-400 border-gray-100 hover:bg-gray-100"
@@ -178,11 +178,12 @@ const ReturnNewChangedDetail: React.FC<ReturnNewChangedDetailProps> = ({
           >
             {tab.label} ({tab.count + (idx === 2 ? 0 : 0)})
           </button>
+
         ))}
       </div>
 
       {/* Table Header (Desktop) */}
-      <div className="hidden lg:grid grid-cols-[1fr_1fr_2.5fr_1fr_1.5fr_1.5fr_1fr] gap-4 px-6 mb-2 text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+      <div className="hidden lg:grid grid-cols-[1fr_1fr_2.5fr_1fr_1.5fr_1.5fr_1fr] gap-4 px-8 py-4 mb-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest border-b border-gray-100 bg-gray-50/50 rounded-t-xl border border-gray-100">
         <div>Status</div>
         <div>Datum</div>
         <div>Maschine / Beschreibung</div>
@@ -190,6 +191,7 @@ const ReturnNewChangedDetail: React.FC<ReturnNewChangedDetailProps> = ({
         <div>Techniker / Depot</div>
         <div>Aktion</div>
       </div>
+
 
       {/* Table/List Content */}
       <div className="bg-gray-50/50 rounded-2xl p-2 sm:p-4 border border-gray-100">
@@ -220,38 +222,41 @@ const ReturnNewChangedDetail: React.FC<ReturnNewChangedDetailProps> = ({
                     )}
                   </div>
                   <div className="flex flex-col">
-                    <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-gray-400">
-                      Am: <span className="text-blue-600 ml-1">{item.date}</span>
+                    <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-gray-400 tracking-wider">
+                      Am: <span className="text-blue-600 ml-1 font-mono">{item.date}</span>
                     </div>
-                    <div className="text-red-500 font-bold font-mono text-base">
+                    <div className="text-red-500 font-bold font-mono text-[13px]">
                       {item.serial}
                     </div>
                   </div>
+
                 </div>
 
                 {/* Description */}
                 <div className="flex-1">
-                  <p className="text-sm font-bold text-gray-800 line-clamp-2">
+                  <p className="text-[13px] font-bold text-gray-800 line-clamp-2 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
 
+
                 {/* Location & BH */}
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2 min-w-[200px]">
-                  <div className="text-blue-600 font-bold text-sm">
+                  <div className="text-blue-600 font-bold text-[13px]">
                     {item.location}
                   </div>
-                  <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-gray-400">
-                    BH: <span className="text-blue-600 text-sm ml-1">{item.bh}</span>
+                  <div className="flex items-center gap-1 text-[11px] font-bold uppercase text-gray-400 tracking-wider">
+                    BH: <span className="text-blue-600 text-[13px] ml-1">{item.bh}</span>
                   </div>
                 </div>
 
+
                 {/* Status Text */}
                 <div className="min-w-[150px]">
-                   <div className={`text-[11px] font-bold uppercase text-gray-400 mb-0.5`}>
+                   <div className={`text-[11px] font-bold uppercase text-gray-400 mb-0.5 tracking-wider`}>
                      Gerät Status:
                    </div>
-                   <div className={`text-sm font-bold ${
+                   <div className={`text-[13px] font-bold ${
                      item.deviceStatusColor === 'red' ? 'text-red-500' : 
                      item.deviceStatusColor === 'green' ? 'text-green-500' : 'text-blue-500'
                    }`}>
@@ -259,15 +264,17 @@ const ReturnNewChangedDetail: React.FC<ReturnNewChangedDetailProps> = ({
                    </div>
                 </div>
 
+
                 {/* Technician */}
                 <div className="min-w-[150px] lg:text-right">
-                  <div className="text-[11px] font-bold uppercase text-gray-400 mb-0.5">
+                  <div className="text-[11px] font-bold uppercase text-gray-400 mb-0.5 tracking-wider">
                     Übernommen:
                   </div>
-                  <div className="text-blue-500 font-bold text-sm">
+                  <div className="text-blue-500 font-bold text-[13px]">
                     {item.technician}
                   </div>
                 </div>
+
               </div>
             </div>
           ))}

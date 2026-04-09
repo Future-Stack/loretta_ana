@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const ProtocolTab: React.FC = () => {
   const images = [
-    "https://images.unsplash.com/photo-1579487785973-74d3ca7b1181?auto=format&fit=crop&q=80&w=800",
-    "https://images.unsplash.com/photo-1587582423116-ec07293f0395?auto=format&fit=crop&q=80&w=800"
+    "/machine_1.png",
+    "/machine_2.png"
   ];
   const [activeImage, setActiveImage] = useState(images[0]);
 
@@ -60,32 +60,34 @@ const ProtocolTab: React.FC = () => {
       {/* Header Info Section */}
       <div className="space-y-4 mb-20">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="text-[14px] font-bold text-gray-400">Boels-Nummer:</span>
-          <span className="text-[15px] font-extrabold text-[#EB342D] tracking-tight">{detailData.boelsNumber}</span>
-          <span className="text-[15px] font-extrabold text-[#0067C0] tracking-tight">{detailData.description}</span>
+          <span className="text-[13px] font-medium text-gray-400">Boels-Nummer:</span>
+          <span className="text-[13px] font-bold text-[#EB342D] tracking-tight">{detailData.boelsNumber}</span>
+          <span className="text-[13px] font-bold text-[#0067C0] tracking-tight">{detailData.description}</span>
         </div>
         
         <div className="flex items-center gap-3">
-          <span className="text-[14px] font-bold text-gray-400">Seriennummer:</span>
-          <span className="text-[15px] font-extrabold text-[#111827] tracking-tight">{detailData.serialNumber}</span>
+          <span className="text-[13px] font-medium text-gray-400">Seriennummer:</span>
+          <span className="text-[13px] font-bold text-[#111827] tracking-tight">{detailData.serialNumber}</span>
         </div>
         
         <div className="flex items-center gap-3">
-          <span className="text-[14px] font-bold text-gray-400">Subgruppe:</span>
-          <span className="text-[15px] font-extrabold text-[#009F4D] tracking-tight">{detailData.subGroup}</span>
+          <span className="text-[13px] font-medium text-gray-400">Subgruppe:</span>
+          <span className="text-[13px] font-bold text-[#009F4D] tracking-tight">{detailData.subGroup}</span>
         </div>
       </div>
+
 
       {/* Two Column Content */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start flex-1">
         {/* Left Column: Attributes */}
         <div className="flex flex-col border-t border-gray-50 pt-2">
           {attributeRows.map((row, i) => (
-            <div key={i} className="flex justify-between items-center py-2 border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-md">
-              <span className="text-[13px] text-gray-300 font-extrabold whitespace-nowrap">{row.label}</span>
+            <div key={i} className="flex justify-between items-center py-2.5 border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-md">
+              <span className="text-[13px] text-gray-400 font-medium whitespace-nowrap">{row.label}</span>
               <span className={`text-[13px] font-bold text-right tracking-tight ${row.valueClass}`}>{row.value}</span>
             </div>
           ))}
+
         </div>
 
         {/* Right Column: Gallery */}

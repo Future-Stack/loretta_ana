@@ -32,25 +32,26 @@ const ProtocolTab: React.FC = () => {
       <div className="bg-white border border-gray-100 rounded-xl p-6 shadow-sm">
         <div className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-semibold text-gray-600">Boels-Nummer:</span>
-            <span className="text-sm font-bold text-red-500">{detailData.boelsNumber}</span>
-            <span className="text-sm font-bold text-blue-600">{detailData.description}</span>
+            <span className="text-[13px] font-medium text-gray-400">Boels-Nummer:</span>
+            <span className="text-[13px] font-bold text-red-500">{detailData.boelsNumber}</span>
+            <span className="text-[13px] font-bold text-blue-600">{detailData.description}</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-gray-600">Seriennummer:</span>
-            <span className="text-sm font-bold text-gray-900">{detailData.serialNumber}</span>
+            <span className="text-[13px] font-medium text-gray-400">Seriennummer:</span>
+            <span className="text-[13px] font-bold text-gray-900">{detailData.serialNumber}</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-gray-600">Subgruppe:</span>
-            <span className="text-sm font-bold text-green-500">{detailData.subGroup}</span>
+            <span className="text-[13px] font-medium text-gray-400">Subgruppe:</span>
+            <span className="text-[13px] font-bold text-green-500">{detailData.subGroup}</span>
           </div>
           
           <div className="flex items-center gap-2">
-            <span className="text-sm font-semibold text-gray-600">Zählerstand Ausgabe:</span>
-            <span className="text-sm font-bold text-blue-600">{detailData.meterReadingOut}</span>
+            <span className="text-[13px] font-medium text-gray-400">Zählerstand Ausgabe:</span>
+            <span className="text-[13px] font-bold text-blue-600">{detailData.meterReadingOut}</span>
           </div>
+
         </div>
       </div>
 
@@ -66,11 +67,12 @@ const ProtocolTab: React.FC = () => {
               { label: "Zählerstand Übernahme:", value: detailData.meterReadingRec, valueClass: "text-blue-500" },
               { label: "Gerät-Zustand:", value: detailData.condition, valueClass: "text-red-500" },
             ].map((row, i) => (
-              <div key={i} className="flex justify-between items-center text-sm border-b border-gray-50 pb-2 last:border-0">
+              <div key={i} className="flex justify-between items-center text-[13px] border-b border-gray-50 pb-2.5 last:border-0 hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-md">
                 <span className="text-gray-400 font-medium">{row.label}</span>
                 <span className={`font-bold ${row.valueClass}`}>{row.value}</span>
               </div>
             ))}
+
           </div>
           <div className="px-6 py-3 bg-gray-50/50 text-right">
             <span className="text-[10px] font-bold text-orange-400 uppercase tracking-tight italic">
@@ -91,11 +93,12 @@ const ProtocolTab: React.FC = () => {
               { label: "Übernommen, Herr:", value: detailData.takenByHerr, valueClass: "text-orange-500" },
               { label: "Zuständiger Techniker:", value: detailData.technician, valueClass: "text-blue-500" },
             ].map((row, i) => (
-              <div key={i} className="flex justify-between items-center text-sm border-b border-gray-50 pb-2 last:border-0">
+              <div key={i} className="flex justify-between items-center text-[13px] border-b border-gray-50 pb-2.5 last:border-0 hover:bg-gray-50/50 transition-colors px-2 -mx-2 rounded-md">
                 <span className="text-gray-400 font-medium">{row.label}</span>
                 <span className={`font-bold ${row.valueClass}`}>{row.value}</span>
               </div>
             ))}
+
           </div>
           <div className="px-6 py-3 bg-gray-50/50 text-right">
             <span className="text-[10px] font-bold text-orange-400 uppercase tracking-tight italic">
@@ -109,8 +112,9 @@ const ProtocolTab: React.FC = () => {
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div className="px-3 py-1 bg-orange-50 border border-orange-100 rounded-md">
-             <span className="text-xs font-bold text-orange-600">Maschinen (0)</span>
+             <span className="text-[11px] font-bold text-orange-600 uppercase tracking-widest">Maschinen (0)</span>
           </div>
+
           <button className="p-1.5 text-gray-400 hover:text-gray-600 transition-colors">
             <RotateCcw size={18} />
           </button>

@@ -21,6 +21,8 @@ import TankLog from "./return protocol/TankLog";
 import ReturnNewChanged from "./return protocol/ReturnNewChanged";
 import FuelList from "./return protocol/FuelList";
 import Return from "./return protocol/Return";
+import Life from "./return protocol/Life";
+
 
 const ViewRouter = ({ path }: { path: string }) => {
   if (path === "/login") return <p>Login View component</p>;
@@ -133,7 +135,8 @@ const ViewRouter = ({ path }: { path: string }) => {
       case "return-return":
         return <Return />;
       case "return-life":
-        return <p>Return Life</p>;
+        return <Life />;
+
       case "return-output-return":
         return <p>Return Output Return</p>;
       case "return-statistics":

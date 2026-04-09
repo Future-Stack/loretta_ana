@@ -26,6 +26,7 @@ type TankLogItem = {
 // ==========================================
 const TableHeader: React.FC = () => (
   <div className="hidden xl:grid grid-cols-[1fr_1fr_2fr_1fr_1fr] gap-4 px-10 py-5 bg-gray-50 border-b border-gray-100 text-[11px] font-bold text-gray-400 border-t border-gray-200 uppercase tracking-widest">
+
     <div>Datum</div>
     <div>Nummer</div>
     <div>Beschreibung</div>
@@ -183,7 +184,8 @@ const TankLog: React.FC = () => {
         {isOverview ? (
           <div className="flex-1 flex flex-col h-full">
             <div className="flex items-center justify-between mb-8">
-               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 capitalize">Return Tank Log Overview</h2>
+               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Return Tank Log Overview</h2>
+
                
                <UniversalDropdown
                   trigger={

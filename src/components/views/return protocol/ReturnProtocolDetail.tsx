@@ -38,10 +38,11 @@ const ReturnProtocolDetail: React.FC<ReturnProtocolDetailProps> = ({ onBack }) =
         <div className="flex items-center gap-4">
           <UniversalDropdown
             trigger={
-              <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-600 hover:border-gray-300 transition-all">
+              <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:border-gray-300 transition-all">
                 Dokument.
                 <ChevronDown size={16} />
               </button>
+
             }
             align="right"
             className="bg-white border-gray-100 !py-0 !shadow-xl !rounded-xl overflow-hidden"
@@ -105,7 +106,7 @@ const ReturnProtocolDetail: React.FC<ReturnProtocolDetailProps> = ({ onBack }) =
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center justify-center px-4 py-2 rounded-lg text-sm font-semibold transition-all shadow-sm border whitespace-nowrap min-w-[40px] ${
+            className={`flex items-center justify-center px-4 py-2 rounded-lg text-[11px] font-bold uppercase tracking-widest transition-all shadow-sm border whitespace-nowrap min-w-[40px] ${
               activeTab === tab.id
                 ? "bg-orange-100 text-orange-600 border-orange-200"
                 : "bg-white text-gray-400 border-gray-100 hover:bg-gray-50 hover:text-gray-600"
@@ -113,6 +114,7 @@ const ReturnProtocolDetail: React.FC<ReturnProtocolDetailProps> = ({ onBack }) =
           >
             {tab.icon ? tab.icon : tab.label}
           </button>
+
         ))}
       </div>
 

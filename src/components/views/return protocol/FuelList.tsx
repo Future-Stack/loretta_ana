@@ -51,8 +51,9 @@ const FuelList: React.FC = () => {
     <div className="w-full bg-white border border-gray-200 rounded-2xl shadow-sm overflow-hidden">
       {/* Header */}
       <div className="px-8 py-6">
-        <h2 className="text-2xl font-bold text-gray-900 tracking-tight">Fuel list</h2>
+        <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">Fuel list</h2>
       </div>
+
       <hr className="border-gray-100" />
 
       {/* Form Content */}
@@ -60,9 +61,10 @@ const FuelList: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
           {/* Gerätenummer */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Gerätenummer:
             </label>
+
             <div className="flex items-center gap-3">
               <input
                 type="text"
@@ -84,9 +86,10 @@ const FuelList: React.FC = () => {
 
           {/* Tankdatum */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Tankdatum:
             </label>
+
             <div className="flex items-center gap-3">
               <div className="flex-1">
                 <DatePicker
@@ -114,9 +117,10 @@ const FuelList: React.FC = () => {
 
           {/* Getankt Liter */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Getankt Liter:
             </label>
+
             <div className="flex items-center gap-3">
               <input
                 type="text"
@@ -136,9 +140,10 @@ const FuelList: React.FC = () => {
 
           {/* Boels Depot */}
           <div className="space-y-2">
-            <label className="block text-sm font-bold text-gray-900">
+            <label className="block text-[13px] font-medium text-gray-400 uppercase tracking-widest mb-1">
               Boels Depot:
             </label>
+
             <input
               type="text"
               placeholder="Type here"

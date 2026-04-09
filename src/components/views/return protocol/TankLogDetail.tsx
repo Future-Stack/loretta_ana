@@ -43,11 +43,12 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center justify-center h-[34px] px-4 rounded-md text-[11px] font-bold transition-all border whitespace-nowrap ${
+                className={`flex items-center justify-center h-[32px] px-4 rounded-md text-[11px] font-bold uppercase tracking-widest transition-all border whitespace-nowrap ${
                   activeTab === tab.id
                     ? "bg-[#FFF6ED] text-[#F39E20] border-[#FBD2A0]"
                     : "bg-white text-gray-400 border-gray-100 hover:bg-gray-50 hover:text-gray-600"
                 }`}
+
               >
                 {tab.icon ? (
                   <span className={activeTab === tab.id ? "text-orange-400 font-bold" : "text-gray-400"}>
@@ -60,10 +61,11 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
 
           <UniversalDropdown
             trigger={
-              <button className="flex items-center gap-10 px-4 py-1.5 bg-white border border-gray-100 rounded-md text-[13px] font-medium text-gray-400 hover:border-gray-200 transition-all shadow-sm">
+              <button className="flex items-center gap-10 px-4 py-1.5 bg-white border border-gray-100 rounded-md text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:border-gray-200 transition-all shadow-sm">
                 Dokument.
                 <ChevronDown size={14} className="text-gray-300" />
               </button>
+
             }
             align="right"
             className="bg-white border-gray-100 !py-0 !shadow-2xl !rounded-xl overflow-hidden"
@@ -90,11 +92,12 @@ const TankLogDetail: React.FC<TankLogDetailProps> = ({ onBack }) => {
         </div>
 
         {/* Footer for upper container */}
-        <div className="mt-8 text-right">
-          <span className="text-[11px] font-bold text-[#FBD2A0] uppercase tracking-tight italic">
+        <div className="mt-8 text-right px-4">
+          <span className="text-[11px] font-bold text-[#FBD2A0] uppercase tracking-widest italic">
             Powered by Boels-Technikweb ®
           </span>
         </div>
+
       </div>
 
       {/* Container 2: Shared Maschinen Section */}
