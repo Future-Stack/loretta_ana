@@ -75,7 +75,6 @@ const Life: React.FC = () => {
   const folderId = pathParts.length >= 3 ? pathParts[2] : null;
   const itemId = pathParts.length >= 4 ? pathParts[3] : null;
 
-  const isOverview = pathParts.length === 2; // /return-protocol/return-life
 
   // Generate Dummy Data (Increased to support 24 items per page)
   const generateData = (): FolderItem[] => {

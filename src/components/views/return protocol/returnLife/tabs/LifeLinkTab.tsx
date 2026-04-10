@@ -1,5 +1,5 @@
 import React from "react";
-import { FileText, File as FileIcon, RotateCcw } from "lucide-react";
+import { FileText, RotateCcw } from "lucide-react";
 
 
 const LifeLinkTab: React.FC = () => {
