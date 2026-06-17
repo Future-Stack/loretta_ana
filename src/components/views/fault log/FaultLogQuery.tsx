@@ -101,7 +101,7 @@ const FaultLogQuery: React.FC = () => {
       <h2 className="text-3xl font-extrabold mb-8 text-gray-900 tracking-tight">Query</h2>
       <hr className="border-gray-200 mb-10" />
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 max-w-6xl">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-8 w-full">
         {/* Techniker & Reparaturstatus */}
         <div className="flex flex-col gap-2">
           <label className="text-sm font-bold text-gray-700">Techniker:</label>
@@ -109,10 +109,10 @@ const FaultLogQuery: React.FC = () => {
         </div>
         <div className="flex flex-col gap-2">
           <label className="text-sm font-bold text-gray-700">Reparaturstatus:</label>
-          <div className="flex items-center gap-2 max-w-[440px]">
-            <RenderDropdown field="reparaturstatus1" value={formData.reparaturstatus1} options={dropdownOptions.reparaturstatus} className="w-[140px]" />
-            <RenderDropdown field="reparaturstatus2" value={formData.reparaturstatus2} options={["alle"]} className="w-[120px]" />
-            <RenderDropdown field="reparaturstatus3" value={formData.reparaturstatus3} options={["alle"]} className="w-[120px]" />
+          <div className="flex items-center gap-2 w-full">
+            <div className="flex-1"><RenderDropdown field="reparaturstatus1" value={formData.reparaturstatus1} options={dropdownOptions.reparaturstatus} className="w-[140px]" /></div>
+            <div className="flex-1"><RenderDropdown field="reparaturstatus2" value={formData.reparaturstatus2} options={["alle"]} className="w-[140px]" /></div>
+            <div className="flex-1"><RenderDropdown field="reparaturstatus3" value={formData.reparaturstatus3} options={["alle"]} className="w-[140px]" /></div>
           </div>
         </div>
 
