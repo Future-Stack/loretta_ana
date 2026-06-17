@@ -273,7 +273,7 @@ const NAVIGATION_CONFIG: Record<ViewType, { label: string; sidebar: SidebarConfi
         },
         {
           title: "Seek",
-          items: [],
+          items: [{ label: "Seek", view: "examinations-seek" }],
         },
       ],
     },
