@@ -22,6 +22,11 @@ import ReturnNewChanged from "./return protocol/ReturnNewChanged";
 import FuelList from "./return protocol/FuelList";
 import Return from "./return protocol/Return";
 import Life from "./return protocol/Life";
+import DamageReportOverview from "./damage report/DamageReportOverview";
+import DamageReportQuery from "./damage report/Query";
+import DamageReportEvaluation from "./damage report/Evaluation";
+import CheckList from "./examination information/CheckList";
+import ExaminationsSeek from "./examination information/Seek";
 
 
 const ViewRouter = ({ path }: { path: string }) => {
@@ -154,11 +159,11 @@ const ViewRouter = ({ path }: { path: string }) => {
 
       // Damage Report
       case "damage-overview":
-        return <p>Damage Overview</p>;
+        return <DamageReportOverview />;
       case "damage-query":
-        return <p>Damage Query</p>;
+        return <DamageReportQuery />;
       case "damage-evaluation":
-        return <p>Damage Evaluation</p>;
+        return <DamageReportEvaluation />;
       case "damage-boels-home":
         return <p>Damage Boels Home</p>;
       case "damage-boels-intranet":
@@ -170,7 +175,9 @@ const ViewRouter = ({ path }: { path: string }) => {
 
       // Examinations Information
       case "examinations-checklist":
-        return <p>Examinations Checklist</p>;
+        return <CheckList />;
+      case "examinations-seek":
+        return <ExaminationsSeek />;
 
       // Fault Report
       case "faultreport-overview":

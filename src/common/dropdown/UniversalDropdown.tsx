@@ -7,6 +7,7 @@ interface UniversalDropdownProps {
   align?: "left" | "right" | "center"; // Positioning
   closeOnSelect?: boolean; // Close when an item is clicked
   className?: string; // Custom UniversalDropdown panel styling
+  wrapperClassName?: string; // Custom class for the root wrapper (e.g. 'w-full')
 }
 
 const UniversalDropdown: React.FC<UniversalDropdownProps> = ({
@@ -15,6 +16,7 @@ const UniversalDropdown: React.FC<UniversalDropdownProps> = ({
   align = "left",
   closeOnSelect = true,
   className = "",
+  wrapperClassName = "",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -47,7 +49,7 @@ const UniversalDropdown: React.FC<UniversalDropdownProps> = ({
       : "left-0";
 
   return (
-    <div className="relative inline-block" ref={dropdownRef}>
+    <div className={`relative inline-block ${wrapperClassName}`} ref={dropdownRef}>
       <div onClick={toggleDropdown} className="cursor-pointer select-none">
         {trigger}
       </div>
